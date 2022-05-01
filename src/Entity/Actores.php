@@ -23,12 +23,12 @@ class Actores
     private $Nombre;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $fechaNacimiento;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $fechaFallecimiento;
 
@@ -59,24 +59,24 @@ class Actores
         return $this;
     }
 
-    public function getFechaNacimiento(): ?string
+    public function getFechaNacimiento(): ?\DateTimeInterface
     {
         return $this->fechaNacimiento;
     }
 
-    public function setFechaNacimiento(?string $fechaNacimiento): self
+    public function setFechaNacimiento(?\DateTimeInterface $fechaNacimiento): self
     {
         $this->fechaNacimiento = $fechaNacimiento;
 
         return $this;
     }
 
-    public function getFechaFallecimiento(): ?string
+    public function getFechaFallecimiento(): ?\DateTimeInterface
     {
         return $this->fechaFallecimiento;
     }
 
-    public function setFechaFallecimiento(?string $fechaFallecimiento): self
+    public function setFechaFallecimiento(?\DateTimeInterface $fechaFallecimiento): self
     {
         $this->fechaFallecimiento = $fechaFallecimiento;
 

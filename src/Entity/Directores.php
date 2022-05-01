@@ -23,7 +23,7 @@ class Directores
     private $Nombre;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $fechaNacimiento;
 
@@ -49,12 +49,12 @@ class Directores
         return $this;
     }
 
-    public function getFechaNacimiento(): ?string
+    public function getFechaNacimiento(): ?\DateTimeInterface
     {
         return $this->fechaNacimiento;
     }
 
-    public function setFechaNacimiento(?string $fechaNacimiento): self
+    public function setFechaNacimiento(?\DateTimeInterface $fechaNacimiento): self
     {
         $this->fechaNacimiento = $fechaNacimiento;
 

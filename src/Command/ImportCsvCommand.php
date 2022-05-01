@@ -131,13 +131,13 @@ class ImportCsvCommand extends Command
 
         $actores = new Actores();
         $actores->setNombre($actor);
-        $actores->setFechaNacimiento('2022-01-01');
-        $actores->setFechaFallecimiento('2022-01-01');
+        $actores->setFechaNacimiento($fechaPublicacionObj);
+        $actores->setFechaFallecimiento($fechaPublicacionObj);
         $actores->setLugarNacimiento('España');
 
         $directores = new Directores();
         $directores->setNombre($director);
-        $directores->setFechaNacimiento('2022-01-01');
+        $directores->setFechaNacimiento($fechaPublicacionObj);
 
         $pelicula = new Peliculas();
         $pelicula->setTitulo($titulo);
