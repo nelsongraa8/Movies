@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Peliculas;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -15,6 +16,16 @@ class PeliculasCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Peliculas::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Conference Comment')
+            ->setEntityLabelInPlural('Películas')
+            ->setSearchFields(['titulo', 'genero', 'productora'])
+            ->setDefaultSort(['id' => 'DESC'])
+        ;
     }
 
     public function configureFields(string $pageName): iterable
