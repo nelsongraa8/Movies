@@ -32,6 +32,11 @@ class Directores
      */
     private $peliculas;
 
+    public function __toString(): string
+    {
+        return $this->getNombre();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

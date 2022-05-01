@@ -60,6 +60,11 @@ class Peliculas
         $this->Actores = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->titulo;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
