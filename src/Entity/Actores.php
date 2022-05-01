@@ -42,6 +42,11 @@ class Actores
      */
     private $peliculas;
 
+    public function __toString(): string
+    {
+        return (string) $this->getNombre();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
