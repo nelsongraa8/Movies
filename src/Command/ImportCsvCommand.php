@@ -47,7 +47,7 @@ class ImportCsvCommand extends Command
 
         $stmt = Statement::create()
             ->offset(0)
-            ->limit(15);
+            ->limit(20);
 
         $records = $stmt->process($csv);
         foreach ($records as $key => $record) {
