@@ -18,9 +18,11 @@ class DirectoresCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IdField::new('id');
-        yield TextField::new('nombre');
-        yield DateTimeField::new('fecha_nacimiento');
-        // yield AssociationField::new('Peliculas');
+        yield IdField::new('id')
+            ->hideOnForm()
+        ;
+        yield TextField::new('nombre', 'Nombre');
+        yield DateTimeField::new('fecha_nacimiento', 'Fecha de nacimiento');
+        yield AssociationField::new('peliculas', 'Película(s)');
     }
 }

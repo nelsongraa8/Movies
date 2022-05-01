@@ -3,8 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Peliculas;
-use App\Entity\Directores;
-use App\Entity\Actores;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -21,13 +19,21 @@ class PeliculasCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield IdField::new('id');
-        yield TextField::new('titulo');
-        yield DateTimeField::new('fecha_publicacion');
-        yield TextField::new('genero');
-        yield IntegerField::new('duracion');
-        yield TextField::new('productora');
-        yield AssociationField::new('Directores');
-        yield AssociationField::new('Actores');
+        yield IdField::new('id')
+            ->hideOnForm()
+        ;
+        yield TextField::new('titulo', 'Título');
+        yield DateTimeField::new('fecha_publicacion', 'Fecha de publicación');
+        yield TextField::new('genero', 'Género');
+        yield IntegerField::new('duracion', 'Duración');
+        yield TextField::new('productora', 'Productora');
+        yield AssociationField::new('Directores', 'Director(s)')
+            ->hideOnIndex()
+            ->autocomplete()
+        ;
+        yield AssociationField::new('Actores', 'Actor(es)')
+            ->hideOnIndex()
+            ->autocomplete()
+        ;
     }
 }

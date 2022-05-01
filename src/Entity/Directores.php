@@ -34,7 +34,7 @@ class Directores
 
     public function __toString(): string
     {
-        return (string) $this->getNombre();
+        return $this->getNombre();
     }
 
     public function getId(): ?int
