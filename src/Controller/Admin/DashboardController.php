@@ -8,6 +8,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+
+use App\Entity\Peliculas;
+use App\Entity\Actores;
+use App\Entity\Directores;
+
 class DashboardController extends AbstractDashboardController
 {
     /**
@@ -15,7 +21,11 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        // return parent::index();
+        $routeBuilder = $this->container->get(AdminUrlGenerator::class);
+        $url = $routeBuilder->setController(PeliculasCrudController::class)->generateUrl();
+
+        return $this->redirect($url);
     }
 
     public function configureDashboard(): Dashboard
@@ -26,7 +36,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
+        yield MenuItem::linkToCrud('Peliculas', 'fas fa-map-marker-alt', Peliculas::class);
+        yield MenuItem::linkToCrud('Actores', 'fas fa-comments', Actores::class);
+        yield MenuItem::linkToCrud('Directores', 'fas fa-comments', Directores::class);
     }
 }
