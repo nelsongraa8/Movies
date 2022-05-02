@@ -3,9 +3,6 @@ ARG TIMEZONE
 
 COPY php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
 
-### Copiar el nuevo soruces.list para Cuba
-COPY sources.list /etc/apt/sources.list
-
 ### -o para conectar al proxy
 RUN apt-get update
 
@@ -43,9 +40,9 @@ RUN curl https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
     && composer --version
 
 ### Hacer el proceso de instalar Composer de manera local
-COPY composer-setup.php /composer-setup.php
-RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-RUN rm composer-setup.php
+# COPY composer-setup.php /composer-setup.php
+# RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+# RUN rm composer-setup.php
 
-WORKDIR /var/www/librarify
+WORKDIR /var/www/movies
 RUN ls
