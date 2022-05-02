@@ -28,7 +28,7 @@ class ImportCsvCommand extends Command
      *
      * @param InsertPeliculaInDb $insertPelicula
      */
-    function __construct(InsertPeliculaInDb $insertPelicula)
+    public function __construct(InsertPeliculaInDb $insertPelicula)
     {
         parent::__construct();
         $this->insertPelicula = $insertPelicula;
@@ -36,8 +36,8 @@ class ImportCsvCommand extends Command
 
     protected function execute(
         InputInterface $input,
-        OutputInterface $output): int
-    {
+        OutputInterface $output
+    ): int {
         $io = new SymfonyStyle($input, $output);
 
         //load the CSV document from a stream

@@ -45,8 +45,7 @@ class InsertPeliculaInDb
         $productora,
         $director,
         $actor
-    )
-    {
+    ) {
         if ($this->verificationExistMovie($titulo)) {
             return false;
         }
