@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - "db_movies:/var/lib/mysql"
+        environment:
+            MYSQL_DATABASE: database
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 12345678
+        ports:
+            - 3306:3306
+        networks:
+            - symfony
+    php:
+        build:
+            context: ./php
+            args:
+                TIMEZONE: ${TIMEZONE}
+        volumes:
+            - ../:/var/www/movies/
+        networks:
+            - symfony
+    nginx:
+        build:
+            context: ./nginx
+        volumes:
+            - ../:/var/www/movies/
+        ports:
+            - 80:80
+        networks:
+            - symfony
+
+volumes:
+    db_movies:
+
+networks:
+    symfony:

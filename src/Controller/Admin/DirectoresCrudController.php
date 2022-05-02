@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Directores;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -14,6 +15,16 @@ class DirectoresCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Directores::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Director')
+            ->setEntityLabelInPlural('Directores')
+            ->setSearchFields(['Nombre'])
+            ->setDefaultSort(['id' => 'DESC'])
+        ;
     }
 
     public function configureFields(string $pageName): iterable

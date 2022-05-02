@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Actores;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -15,6 +16,16 @@ class ActoresCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Actores::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Actor')
+            ->setEntityLabelInPlural('Actores')
+            ->setSearchFields(['Nombre', 'lugarNacimiento'])
+            ->setDefaultSort(['id' => 'DESC'])
+        ;
     }
 
     public function configureFields(string $pageName): iterable

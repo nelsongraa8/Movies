@@ -21,7 +21,7 @@ class PeliculasCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Conference Comment')
+            ->setEntityLabelInSingular('Película')
             ->setEntityLabelInPlural('Películas')
             ->setSearchFields(['titulo', 'genero', 'productora'])
             ->setDefaultSort(['id' => 'DESC'])
