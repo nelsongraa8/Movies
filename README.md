@@ -35,6 +35,8 @@ Trabajo con .env.local, asi subo al repositorio el .env para que las variables d
 Usando la libreria de CaptainHook puedo ejecutar comandos otras librerias en entorno de dev, pre commit, asi no necesito esperar a que Github Actions me diga el estado del commit si se lanza es porque paso todas las pruebas con phpcs y demas libreria que se irian usando en el repositorio. Asi puedo ejecutar herramientas que Github Action es incapas de correr en su sistema como la automatizacion de test con PHPPanther el cual recluta al navegador web para ejecutar todas las pruebas en ligar de se la interface simple de WebTestCase.
 EL commit no se ejecuta hasta que todas las pruebas no esten completamente funcionales.
 
+Use la relacion OneToMany en las tablas ya que si el trabajo creciera al final los actores habria que separarlos uno por uno con su respectivo ID de IMDb y asi a una pelicula le tocarian multiples artistas. Y lo mismo pasaria con los directores, ademas cuando crezca el codigo, tambien habria que traer datos, desde la API, de las praductoras como su imagen y sus nombres.
+
 ## Cosas para hacer en un proyecto real:
 - Crear test funcionales a las rutas que se vayan creando en el panel de administracion de esta manera la refactorisacion de codigo en el futuro no corre peligro.
 - Crear test Unitarios a los metodos principales mokeando los datos que necesitan los mismos.
