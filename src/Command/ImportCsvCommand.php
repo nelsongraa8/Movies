@@ -38,8 +38,7 @@ class ImportCsvCommand extends Command
 
     protected function configure(): void
     {
-        $this
-            ->addArgument('pathFileCsv', InputArgument::OPTIONAL, 'Ubicacion del archivo CSV');
+        $this->addArgument('pathFileCsv', InputArgument::OPTIONAL, 'Ubicacion del archivo CSV');
     }
 
     protected function execute(
@@ -47,13 +46,16 @@ class ImportCsvCommand extends Command
         OutputInterface $output
     ): int {
         $io = new SymfonyStyle($input, $output);
+        /**
+         * Argumento para obtener la ubicacion del archivo CSV
+         */
         $pathFileCsv = $input->getArgument('pathFileCsv');
 
         //load the CSV document from a stream
-        if ($pathFileCsv) {
+        if ($pathFileCsv) {  //si se ingreso el path del archivo CSV
             $stream = fopen($pathFileCsv, 'r');
         }
-        if (!$pathFileCsv) {
+        if (!$pathFileCsv) { //si no se ingreso el path del archivo CSV
             $stream = fopen('./var/IMDb movies.csv', 'r');
         }
 
