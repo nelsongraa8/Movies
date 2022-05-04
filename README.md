@@ -41,5 +41,6 @@ Use la relacion OneToMany en las tablas ya que si el trabajo creciera al final l
 - Crear test funcionales a las rutas que se vayan creando en el panel de administracion de esta manera la refactorisacion de codigo en el futuro no corre peligro.
 - Crear test Unitarios a los metodos principales mokeando los datos que necesitan los mismos.
 - Crear test Unitarios a los metodos de la clase Utils para verificar que se han insertado correctamente los datos en la DB.
+- Tambien usaria PHP STAN y PHP Mess Detector como verificaiones a la hora de hacer commit y en la integracion continua para verificar la calidad del codigo que se carga.
 - Añadir Symfony Security al panel de administracion para poder crear usuarios y roles.
 - Traeria los datos desde la API de IMDb o desde TMDB, que tienen una potente API con los datos actualizados, en lugar de cargarlos desde un CSV.

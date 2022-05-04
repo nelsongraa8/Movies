@@ -6,7 +6,9 @@ use League\Csv\Reader;
 use League\Csv\Statement;
 use App\Command\Utils\InsertPeliculaInDb;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -34,22 +36,34 @@ class ImportCsvCommand extends Command
         $this->insertPelicula = $insertPelicula;
     }
 
+    protected function configure(): void
+    {
+        $this
+            ->addArgument('pathFileCsv', InputArgument::OPTIONAL, 'Ubicacion del archivo CSV');
+    }
+
     protected function execute(
         InputInterface $input,
         OutputInterface $output
     ): int {
         $io = new SymfonyStyle($input, $output);
+        $pathFileCsv = $input->getArgument('pathFileCsv');
 
         //load the CSV document from a stream
-        $stream = fopen('./var/IMDb movies.csv', 'r');
-        $csv = Reader::createFromStream($stream);
+        if ($pathFileCsv) {
+            $stream = fopen($pathFileCsv, 'r');
+        }
+        if (!$pathFileCsv) {
+            $stream = fopen('./var/IMDb movies.csv', 'r');
+        }
 
+        $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(',');
         $csv->setHeaderOffset(0);
 
         $stmt = Statement::create()
-            ->offset(0)
-            ->limit(20);
+            ->offset(0);
+        // ->limit(20);
 
         $records = $stmt->process($csv);
         foreach ($records as $key => $record) {
