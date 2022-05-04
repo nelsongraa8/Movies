@@ -15,14 +15,6 @@ services:
             - 3306:3306
         networks:
             - symfony
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - 8080:80
-        environment:
-            - PMA_HOST=db
-        depends_on:
-            - db
     php:
         build:
             context: ./php
